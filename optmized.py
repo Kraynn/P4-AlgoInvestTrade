@@ -15,7 +15,6 @@ def convert_csv(csv_name):
     return (list(
     (row[0], float(row[1]), float(row[2])) for row in csv_file))
 
-
 def greedy_approximation(stocks, budget):
     stocks = sorted(stocks, key=lambda n:n[2], reverse=True)
     portfolio = {}
