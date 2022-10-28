@@ -40,12 +40,9 @@ def display_results(shares, shares_price, profit):
 def optimize():
     data = input("Quel est le nom du fichier au sein de votre répetoire? \n")
     budget = input("Quel est le budget choisi? \n")
-    start = perf_counter()
     stocks = convert_csv(f"dataset/{data}.csv")
     shares, shares_price, profit = (greedy_approximation(stocks, budget))
     display_results(shares, shares_price, profit)
-    end = perf_counter()
-    print(end - start)
 
     
 optimize()
