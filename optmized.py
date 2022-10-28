@@ -47,5 +47,5 @@ def optimize():
     end = perf_counter()
     print(end - start)
 
-
+    
 optimize()
