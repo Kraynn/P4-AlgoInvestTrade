@@ -4,6 +4,7 @@ d'actions et qui retourne l'investissement le plus profitable
 dans la limite du budget imposé en fonction du rendement
 """
 
+
 import csv
 import itertools
 from time import perf_counter
