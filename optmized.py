@@ -22,7 +22,7 @@ def greedy_approximation(stocks, budget):
     profit = 0
     for i in range(len(stocks)):
         name, price, value = stocks[i]
-        if shares_price < budget and shares_price + price < budget:
+        if shares_price <= float(budget) and shares_price + price <= float(budget):
             shares_price += price
             portfolio[name] = price
             profit += value

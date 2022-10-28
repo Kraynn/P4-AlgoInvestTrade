@@ -21,7 +21,7 @@ def check_cost(combi, budget):
     price = 0
     for i in range(len(combi)):
         price += combi[i][1]
-    if price <= budget:
+    if price <= float(budget):
         return True
     else:
         return False
@@ -38,7 +38,7 @@ def display_results(stock_list):
     print(
         f"Les actions à acheter sont les suivantes: \n {','.join(portfolio)}",
         f"\n Coût total: {sum(shares[1] for shares in stock_list[1])}",
-        f"\n Profit : {stock_list[0]} \n"
+        f"\n Profit : {round((stock_list[0]), 2)} \n"
     )
 
 def bruteforce():
