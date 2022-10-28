@@ -15,7 +15,6 @@ def convert_csv(csv_name):
     return (list(
     (row[0], float(row[1]), float(row[2])) for row in csv_file))
 
-
 def greedy_approximation(stocks, budget):
     stocks = sorted(stocks, key=lambda n:n[2], reverse=True)
     portfolio = {}
@@ -40,9 +39,9 @@ def display_results(shares, shares_price, profit):
 
 def optimize():
     data = input("Quel est le nom du fichier au sein de votre répetoire? \n")
+    budget = input("Quel est le budget choisi? \n")
     start = perf_counter()
     stocks = convert_csv(f"dataset/{data}.csv")
-    budget = 500
     shares, shares_price, profit = (greedy_approximation(stocks, budget))
     display_results(shares, shares_price, profit)
     end = perf_counter()

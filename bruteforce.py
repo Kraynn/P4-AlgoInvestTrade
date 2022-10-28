@@ -16,7 +16,7 @@ def convert_csv(csv_name):
     return (list(
     (row[0], float(row[1]), float(row[2])*float(row[1])/100) for row in csv_file))
     
-def check_cost(combi, budget = 500):
+def check_cost(combi, budget):
     price = 0
     for i in range(len(combi)):
         price += combi[i][1]
@@ -42,6 +42,7 @@ def display_results(stock_list):
 
 def bruteforce():
     data = input("Quel est le nom du fichier au sein de votre répetoire? \n")
+    budget = input("Quel est le budget choisi? \n")
     start = perf_counter()
     stocks = convert_csv(f"dataset/{data}.csv")
     stock_selection = []
@@ -49,7 +50,7 @@ def bruteforce():
         combis = list(itertools.combinations(stocks, k))
         for elem in combis:
             combi = list(elem)
-            if check_cost(combi):
+            if check_cost(combi, budget):
                 stock_selection.append(calculate_profit(combi))
     sorted_list = sorted(stock_selection, key=lambda n: n[0], reverse=True)
     display_results(sorted_list[0])
