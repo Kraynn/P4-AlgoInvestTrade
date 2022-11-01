@@ -7,6 +7,7 @@ dans la limite du budget imposé en fonction du rendement
 
 import csv
 import itertools
+import os, psutil
 from time import perf_counter
 
 
@@ -45,6 +46,7 @@ def bruteforce():
     data = input("Quel est le nom du fichier au sein de votre répetoire? \n")
     budget = input("Quel est le budget choisi? \n")
     start = perf_counter()
+    process = psutil.Process(os.getpid())
     stocks = convert_csv(f"dataset/{data}.csv")
     stock_selection = []
     for k in range(1,len(stocks)):
@@ -54,9 +56,11 @@ def bruteforce():
             if check_cost(combi, budget):
                 stock_selection.append(calculate_profit(combi))
     sorted_list = sorted(stock_selection, key=lambda n: n[0], reverse=True)
+    print("\n Solution bruteforce \n ")
     display_results(sorted_list[0])
     end = perf_counter()
-    print(end - start)
+    print(f"Temps d'execution: {end - start}")
+    print(f"Mémoire utilisée: {process.memory_info().rss / 1048576} M")
 
 
 bruteforce()
