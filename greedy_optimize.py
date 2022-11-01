@@ -42,14 +42,12 @@ def optimize():
     data = input("Quel est le nom du fichier au sein de votre répetoire? \n")
     budget = input("Quel est le budget choisi? \n")
     start = perf_counter()
-    process = psutil.Process(os.getpid())
     stocks = convert_csv(f"dataset/{data}.csv")
     shares, shares_price, profit = (greedy_approximation(stocks, budget))
     print("\n Solution optimisée (méthode greedy)")
     display_results(shares, shares_price, profit)
     end = perf_counter()
-    print(f"Temps d'execution: {end - start}")
-    print(f"Mémoire utilisée: {process.memory_info().rss / 1048576} MB")
+    print(end - start)
 
-
+    
 optimize()
