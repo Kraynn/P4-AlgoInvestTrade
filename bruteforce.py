@@ -60,7 +60,7 @@ def bruteforce():
     display_results(sorted_list[0])
     end = perf_counter()
     print(f"Temps d'execution: {end - start}")
-    print(f"Mémoire utilisée: {process.memory_info().rss / 1048576} M")
+    print(f"Mémoire utilisée: {process.memory_info().rss / 1048576} MB")
 
 
 bruteforce()
