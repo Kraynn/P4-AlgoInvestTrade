@@ -14,7 +14,7 @@ def convert_csv(csv_name):
     csv_file = csv.reader(data)
     next(csv_file)
     return (list(
-    {"share" :row[0],
+    {"share" : row[0],
      "price": float(row[1]),
      "profit": float(row[2])*float(row[1])/100} for row in csv_file))
 
@@ -34,17 +34,16 @@ def dynamic_optimize(budget, stocks):
     for i in range(1, n+1):  
         for w in range(1, budget+1):  
             if stocks[i-1]["price"] < w: 
-                k[i][w] = max((stocks[i-1]["profit"])+k[i-1]
+                k[i][w] = max((stocks[i-1]["profit"])+ k[i-1]
                                [w-(stocks[i-1]["price"])], k[i-1][w]) 
             else:
-                k[i][w] = k[i-1][w] 
+                k[i][w] = k[i-1][w]  
 
-    w = budget  
-    while w >= 0 and n >= 0: 
-        prev_share = stocks[n-1] 
-        if k[n][w] == k[n-1][w - prev_share["price"]] + prev_share["profit"]: 
-            portfolio.append(prev_share) 
-            w -= prev_share["price"]
+    while budget >= 0 and n >= 0: 
+        share = stocks[n-1] 
+        if k[n][budget] == k[n-1][budget - share["price"]] + share["profit"]: 
+            portfolio.append(share) 
+            budget -= share["price"]
         n -= 1 
     return portfolio
 
