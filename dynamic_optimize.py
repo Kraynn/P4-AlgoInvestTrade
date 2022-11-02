@@ -1,6 +1,7 @@
 """
 Algorithme dynamique utilisant la méthode knapsack pour renvoyer la meilleur
-stragégie d'investissement sur un grand nombre de données 
+stragégie d'investissement sur un grand nombre de données.
+Budget = W, Coût de l'action = wt, Profit = val, Nombres d'actions = n
 """
 
 
