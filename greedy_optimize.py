@@ -14,7 +14,7 @@ def convert_csv(csv_name):
     csv_file = csv.reader(data)
     next(csv_file)
     return (list(
-    (row[0], float(row[1]), float(row[2])*float(row[1])/100) for row in csv_file))
+    (row[0], float(row[1]), float(row[2]))) for row in csv_file)
 
 def greedy_approximation(stocks, budget):
     stocks = sorted(stocks, key=lambda n:n[2], reverse=True)
@@ -23,12 +23,12 @@ def greedy_approximation(stocks, budget):
     profit = 0
     for i in range(len(stocks)):
         name, price, value = stocks[i]
-        if shares_price <= float(budget) and shares_price + price <= float(budget):
+        if shares_price <= float(budget) and shares_price + price <= float(budget) and price > 0:
             shares_price += price
             portfolio[name] = price
-            profit += value
+            profit += price * value / 100
         else:         
-            break
+            continue
     return portfolio, shares_price, round(profit,2) 
 
 def display_results(shares, shares_price, profit):        
@@ -51,5 +51,5 @@ def optimize():
     print(f"Temps d'execution: {end - start}")
     print(f"Mémoire utilisée: {process.memory_info().rss / 1048576} MB")
 
-    
+  
 optimize()
